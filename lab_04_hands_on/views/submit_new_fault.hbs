@@ -1,0 +1,15 @@
+{{#extends 'base'}}
+    {{#block 'content'}}
+    <h2>Submit a new fault found in the estate</h2>
+    
+    <div>
+        <input type="radio" name="fault" value="liftBrokeDown">
+        <label>Lift broke down</label><br>
+        <input type="radio" name="fault" value="pipeLeak">
+        <label>pipe leak</label><br>
+        <input type="radio" name="fault" value="Others">
+        <label>Others</label>
+    </div>
+    <button>Submit</button>
+    {{/block}}
+{{/extends}}

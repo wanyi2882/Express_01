@@ -46,7 +46,7 @@ app.get('/fruits', function(req,res){
 })
 
 app.post('/fruits', function(req,res){ 
-    console.log(req.body)
+    // to check res.send(req.body) and will display on browser
 
     let item = req.body.items;
     if (item){
@@ -55,7 +55,7 @@ app.post('/fruits', function(req,res){
         }
     } else{
         item =[]
-    }console.log(item)
+    }// to check : res.send(item)
 
     let cost = {
         'apple': 3,
@@ -64,17 +64,79 @@ app.post('/fruits', function(req,res){
         'banana': 4
     }
 
+    //for loop method
     let sum = 0
 
     for(let each of item){
         sum += cost[each]
-    }
-        console.log(sum)
+    }// to check: console.log(sum)
+
+    //reducer method
+    // let reducer = function(resultSoFar, currentFruit) {
+    //     let fruitCost = cost[currentFruit];
+    //     return resultSoFar + fruitCost;
+    // }
+    // let sum = item.reduce(reducer, 0);
+
 
     res.render('fruits-cost',{
         'total':sum
     })
 })
+
+app.get('/lost-and-found-form', function(req, res){
+    res.render('forms/form')
+})
+
+//method 1
+// app.post('/lost-and-found-form', function(req, res){
+//     //to check: res.send(req.body)
+//     let nameLength = req.body.name;
+//     let email = req.body.email;
+
+//     let nameInvalid = false;
+//     let emailInvalid = false;
+
+//     if (nameLength.length < 3 || nameLength.length > 200){
+//         nameInvalid = true;
+//     }
+
+//     if (email.includes('.') == false || email.includes('@') == false){
+//         emailInvalid = true;
+//     }
+
+//     let noError = nameInvalid == false && emailInvalid == false;
+
+//     res.render('form-validate',{
+//         'nameInvalid': nameInvalid,
+//         'emalInvalid': emailInvalid,
+//         'noError': noError
+//     })
+//})
+
+    app.post('/lost-and-found-form', function (req, res){
+        let errors = [];
+        if (req.body.name.length < 3 || req.body.name.length >200){
+            errors.push("the item name is too short or too long")
+        }
+
+        if (! req.body.email.includes('.')){
+            errors.push("email does not have a .")
+        }
+
+        if (! req.body.email.includes('@')){
+            errors.push("email does not have a @")
+        }
+
+        if (errors.length == 0){
+            console.log("no errors")
+        }
+
+        res.render('form-validate-2',{
+            'errors':errors
+        })
+    })
+
 
 app.listen(3000, function(){
     console.log('server has started')

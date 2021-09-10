@@ -1,0 +1,76 @@
+{{#extends 'base'}}
+{{#block 'content'}}
+
+<h1>Lost and Found Form</h1>
+
+<form method="POST">
+    <div id="name">
+        <label>Name of item lost:</label>
+        <input class="form-control" type="text" name="name"/>
+    </div>
+
+    <div id="email">
+        <label>Email Address:</label>
+        <input class="form-control" type="text" name="email"/>
+    </div>
+
+    <div id="place-lost">
+        <label>Where did you leave your items?</label>
+
+        <div class="form-check form check-inline">
+            <input class="form-check-input" type="radio" name="place" value="taxi"/>
+            <label class="form-check-label">Taxi</label>
+        </div>
+
+        <div class="form-check form check-inline">
+            <input class="form-check-input" type="radio" name="place" value="bus"/>
+            <label class="form-check-label">Bus</label>
+        </div>
+
+        <div class="form-check form check-inline">
+            <input class="form-check-input" type="radio" name="place" value="mrt"/>
+            <label class="form-check-label">MRT</label>
+        </div>
+    </div>
+
+    <div>
+        <label>Properties of lost item</label><br>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="property" value="bulky"/>
+            <label class="form-check-label">Bulky</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="property" value="expensive"/>
+            <label class="form-check-label">Expensive</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="property" value="colorful"/>
+            <label class="form-check-label">Colorful</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="property" value="branded"/>
+            <label class="form-check-label">Branded</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="property" value="small"/>
+            <label class="form-check-label">Small</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="property" value="plain"/>
+            <label class="form-check-label">Plain</label>
+        </div>
+
+    </div>
+
+    <input type="submit" class="my-3 btn btn-primary"/>
+
+</form>
+
+{{/block}}
+{{/extends}}
